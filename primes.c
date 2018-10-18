@@ -42,7 +42,7 @@ void sieve(int c) {
     if(brot[i] == 1) {
       int ni = iTn(i);
       printf("i%d,ni%d,  ", i,ni);
-      for(nj = 2 * ni; nj < 2 * exit; nj += ni) {
+      for(nj = 2 * ni; nj < nlimit; nj += ni) {
         int j;
         if(nj % 2 == 0)
           j = 0;
