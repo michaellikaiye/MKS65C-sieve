@@ -20,25 +20,20 @@
 int sieve(int c) {
   int limit = 1.5 * c * log(c);
   bool *array = calloc(limit,sizeof(bool));
-  int s = 0; //setting all as primes
-  for(s; s < limit; s++) {
-    printf("%c", *(array+s));
-    *(array+s) = 1;
-  }
   int exit = sqrt((double)limit) + 1;
   int i = 2;
   int nj;
   for(i; i < exit; i++)
-    if(*(array+i) == 1) { //checking for primes
+    if(*(array+i) == 0) { //checking for primes
       //printf("%d,",i);
       for(nj = 2 * i; nj < limit; nj += i) { 
-        *(array+nj) = 0; //making not prime
+        *(array+nj) = 1; //making not prime
       }
     }
   int p = 2;
   int size = 1;
   for(p; size - 1 != c; p++)
-    if(*(array+p) == 1) { //checking for primes
+    if(*(array+p) == 0) { //checking for primes
       //printf("%d: %d, ", size,p);
       size++;
     }
@@ -49,7 +44,7 @@ int sieve(int c) {
 int main(int argc, char * argv[]) {
   clock_t begin = clock();
   /* here, do your time-consuming job */
-  int a = sieve(1000000);
+  int a = sieve(2000000);
   printf("%d\n",a);
   clock_t end = clock();
   double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
