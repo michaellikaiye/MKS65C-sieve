@@ -22,7 +22,7 @@ int main(int argc, char * argv[]){
   int i = 0;
   while(i < iterations) {
     begin = clock();
-    ans=sieve(target);
+    ans = sieve(target);
     end = clock();
     
     
