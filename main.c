@@ -5,6 +5,8 @@
 #include <time.h>
 #include "sieve.h"
 
+#include <locale.h> //easy to read numbers
+
 int main(int argc, char * argv[]){
   int iterations = 1;
   int target = 1000000;
@@ -25,8 +27,6 @@ int main(int argc, char * argv[]){
     ans = sieve(target);
     end = clock();
     
-    
-    //printf("The n=%d prime is %d\n", target, ans );
     double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
     times[i] = time_spent;
     //printf("time spent: %lfs\n\n",time_spent);
@@ -35,8 +35,11 @@ int main(int argc, char * argv[]){
     //target++;
     i++;
   }
-  ans=sieve(target);
-  printf("The n=%d prime is %d\n", target, ans );
+  
+  setlocale(LC_NUMERIC, ""); //easy to read
+  ans = sieve(target);
+  printf("The n=%'d prime is %'d \n", target, ans);
+  
   double sum;
   double ave;
   sum = ave = 0;
