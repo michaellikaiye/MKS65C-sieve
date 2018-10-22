@@ -43,6 +43,8 @@ int sieveNoModDivideBitWise(int targetPrime) {
     return 3;
   int locLimit;
   if(targetPrime < 1000)
+    locLimit = targetPrime * (int)log(targetPrime);
+  else if(targetPrime < 1000)
     locLimit = .5 * targetPrime * (int)log(targetPrime);//set zones?
   else
     locLimit = .4 * targetPrime * (int)log(targetPrime);

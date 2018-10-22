@@ -29,6 +29,8 @@ int sieve(int targetPrime) {
   int locLimit; //onethird of actual limit
   //diff k value for magnitudes SET ZONES??
   if(targetPrime < 1000)
+    locLimit = targetPrime * (int)log(targetPrime);
+  else if(targetPrime < 1000)
     locLimit = .5 * targetPrime * (int)log(targetPrime);
   else
     locLimit = .4 * targetPrime * (int)log(targetPrime);

@@ -22,6 +22,7 @@ int main(int argc, char * argv[]){
   clock_t begin;
   clock_t end;
   int i = 0;
+  setlocale(LC_NUMERIC, ""); //easy to read
   while(i < iterations) {
     begin = clock();
     ans = sieve(target);
@@ -29,17 +30,17 @@ int main(int argc, char * argv[]){
     
     double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
     times[i] = time_spent;
+    printf("The n=%'d prime is %'d \n", target, ans);
     //printf("time spent: %lfs\n\n",time_spent);
     //this is to modify which prime to
     //potentially avoid CPU caching
-    //target++;
+    target++;
     i++;
   }
   
-  setlocale(LC_NUMERIC, ""); //easy to read
-  ans = sieve(target);
-  printf("The n=%'d prime is %'d \n", target, ans);
   
+  ans = sieve(target);
+    
   double sum;
   double ave;
   sum = ave = 0;
